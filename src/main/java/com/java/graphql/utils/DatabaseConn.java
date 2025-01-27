@@ -115,8 +115,8 @@ public class DatabaseConn {
     public Author authorByBook(int authorID) throws Exception{
         String query = "SELECT a.authorID, a.authorName " +
                 "FROM author a " +
-                "LEFT JOIN books ON books.authorID = a.authorID " +
-                "WHERE books.authorID = " + authorID;
+                "LEFT JOIN book ON book.authorID = a.authorID " +
+                "WHERE book.authorID = " + authorID;
         Connection connection = getConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);

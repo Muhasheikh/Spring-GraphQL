@@ -1,8 +1,13 @@
+type Mutation{
+    saveBook(book:BookInput) : Book
+    updateBookByID(bookID:ID!,updateBookInput:UpdateBookInput): Book
+}
+
 type Query {
 
     books: [Book]
     bookByID(bookID: Int) : Book
-    author:Author
+    author(book:BookInput):Author
 }
 
 
@@ -16,4 +21,22 @@ type Book {
 type Author{
     authorID : ID
     authorName : String
+}
+
+input BookInput {
+    bookID: ID
+    bookName: String
+    pageCount: Int
+    author: authorInput
+}
+
+input authorInput{
+    authorID : ID
+    authorName : String
+}
+
+
+input UpdateBookInput {
+    bookName: String
+    pageCount: Int
 }

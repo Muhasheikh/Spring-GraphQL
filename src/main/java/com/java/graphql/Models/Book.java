@@ -1,25 +1,39 @@
 package com.java.graphql.Models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+
+@Entity
 public class Book {
 
+    @Id
     private int bookID;
     private String bookName;
     private int pageCount;
+    @ManyToOne
+    private Author author;
 
-    private int authorID;
 
-    public int getAuthorID() {
-        return authorID;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setAuthorID(int authorID) {
-        this.authorID = authorID;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public Book(int bID, String bookName, int pageCount){
         this.bookID = bID;
         this.bookName=bookName;
         this.pageCount=pageCount;
+    }
+
+    public Book(int bookID,String bookName, int pageCount, Author author) {
+        this.bookName = bookName;
+        this.pageCount = pageCount;
+        this.author = author;
+        this.bookID =bookID;
     }
 
     public Book(){};

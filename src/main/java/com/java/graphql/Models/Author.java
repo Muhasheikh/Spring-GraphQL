@@ -1,10 +1,20 @@
 package com.java.graphql.Models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.List;
+
+@Entity
 public class Author {
 
+    @Id
     private int authorID;
     private String authorName;
 
+    @OneToMany(mappedBy = "author")
+    private List<Book> book;
     public Author(){};
 
     public Author(int authorID,String authorName){
